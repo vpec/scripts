@@ -5,16 +5,14 @@
 # -------------------------------------------------------------------- |
 #                       SCRIPT OPTIONS                                 |
 # ---------------------------------------------------------------------|
-OPENCV_VERSION='4.2.0'       # Version to be installed
-OPENCV_CONTRIB='NO'          # Install OpenCV's extra modules (YES/NO)
+OPENCV_VERSION='3.4.9'       # Version to be installed
+OPENCV_CONTRIB='YES'          # Install OpenCV's extra modules (YES/NO)
 # -------------------------------------------------------------------- |
 
 # |          THIS SCRIPT IS TESTED CORRECTLY ON          |
 # |------------------------------------------------------|
 # | OS               | OpenCV       | Test | Last test   |
 # |------------------|--------------|------|-------------|
-# | Ubuntu 20.04 LTS | OpenCV 4.2.0 | OK   | 25 Apr 2020 |
-# |----------------------------------------------------- |
 # | Debian 10.2      | OpenCV 4.2.0 | OK   | 26 Dec 2019 |
 # |----------------------------------------------------- |
 # | Debian 10.1      | OpenCV 4.1.1 | OK   | 28 Sep 2019 |
@@ -89,7 +87,7 @@ fi
 if [ $OPENCV_CONTRIB = 'YES' ]; then
 cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON \
       -DWITH_XINE=ON -DENABLE_PRECOMPILED_HEADERS=OFF \
-      -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules ..
+      -DOPENCV_ENABLE_NONFREE:BOOL=ON -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules ..
 fi
 
 make -j8
